@@ -1,6 +1,6 @@
-const mongoose = require("mongoose");
+import mongoose = require("mongoose");
 
-const deckSchema = mongoose.Schema({
+const deckSchema = new mongoose.Schema({
   name: String,
 });
 

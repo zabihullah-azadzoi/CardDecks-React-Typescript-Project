@@ -1,0 +1,10 @@
+.headerContainer {
+  height: 5rem;
+  width: 100vw;
+  background-color: cornflowerblue;
+  padding: 1rem 5rem;
+  font-weight: bold;
+  color: whitesmoke;
+  font-style: italic;
+  font-size: 2rem;
+}

@@ -11,7 +11,7 @@ exports.addDeck = async (req: Request, res: Response) => {
       return res.status(400).json("no data is provided!");
     }
 
-    const newDeck = await new Deck({ name: deck.name }).save();
+    const newDeck = await new Deck({ name: deck }).save();
     res.json({ deck: newDeck });
   } catch (err) {
     res.status(400).json("something went wrong!");

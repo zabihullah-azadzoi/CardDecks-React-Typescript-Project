@@ -1,0 +1,25 @@
+.home {
+  height: calc(100vh - 5rem);
+  color: #fff;
+  background-color: #252425;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.input {
+  background-color: #1a1a1a;
+  color: white;
+  padding: 10px;
+  width: 15rem;
+  border: 1px solid #fff;
+  border-radius: 5px;
+  margin-right: 1rem;
+  font-size: 1rem;
+  outline: none;
+}
+
+::placeholder {
+  color: white;
+  opacity: 0.8;
+}
