@@ -1,40 +1,33 @@
-import { useState } from "react";
-import axios from "axios";
+import axiosInstance from "../http";
+import {
+  UseHttpReturnType,
+  ConfigType,
+  FuncType,
+} from "../types/useHttp.types";
+import { toast } from "react-toastify";
 
-interface ConfigType {
-  method: string;
-  url: string;
-  data: any;
-}
-
-type FuncType = (data: any) => void;
-interface UseHttpType {
-  error: string;
-  sendRequest: (config: ConfigType, func: FuncType) => void;
-}
-
-const useHttp = (): UseHttpType => {
-  const [error, setError] = useState<string>(null!);
-
-  const sendRequest = (config: ConfigType, func: FuncType): void => {
-    axios({
+const useHttp = (): UseHttpReturnType => {
+  const sendRequest = (config: ConfigType, func?: FuncType): void => {
+    axiosInstance({
       method: config.method ?? "GET",
       url: config.url,
-      data: config.data ?? null,
-      headers: { "Content-Type": "application/json" },
+      data: config.data ?? undefined,
     })
       .then((response) => {
         if (response.data) {
+          if (!func) return;
           func(response.data);
         }
       })
       .catch((err) => {
-        setError(err);
+        toast.error(
+          (err.response.data && err.response.data?.message) ||
+            "something went wrong!"
+        );
       });
   };
 
   return {
-    error,
     sendRequest,
   };
 };

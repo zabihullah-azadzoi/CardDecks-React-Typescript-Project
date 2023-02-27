@@ -1,0 +1,28 @@
+.deck {
+  height: 10rem;
+  width: 13rem;
+  background-color: #fff;
+  color: blueviolet;
+  font-size: 1.5rem;
+  margin: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 1rem;
+  position: relative;
+}
+
+.closeButton {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+.deckName {
+  cursor: pointer;
+}
