@@ -25,4 +25,10 @@
 
 .deckName {
   cursor: pointer;
+  text-decoration: unset;
+  transition: all ease-in-out 0.2s;
+}
+
+.deckName:hover {
+  color: #000000;
 }

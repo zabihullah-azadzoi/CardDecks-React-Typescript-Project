@@ -1,10 +1,10 @@
 .home {
-  height: calc(100vh - 5rem);
+  min-height: calc(100vh - 5rem);
   color: #fff;
   background-color: #252425;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: start;
   flex-direction: column;
 }
 
@@ -28,4 +28,15 @@
 .decksContainer {
   display: flex;
   flex-wrap: wrap;
+}
+
+.sectionContainer {
+  text-align: center;
+}
+
+.title {
+  font-size: 3rem;
+  font-style: italic;
+  font-weight: bold;
+  margin-bottom: 10rem;
 }

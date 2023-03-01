@@ -1,9 +1,10 @@
 import { ChangeEvent, ReactElement, useState, useEffect } from "react";
-import classes from "./Home.module.css";
+// import classes from "./Home.module.css";
 
 import useHttp from "../../hooks/useHttp";
 
 import DeckCard from "../../components/DeckCard/DeckCard";
+import DeckFlashCardComponent from "../../components/shared/DeckFlashCardComponent/DeckFlashCardComponent";
 
 type DeckCardType = { id: string; name: string };
 
@@ -27,7 +28,7 @@ const Home = (): ReactElement => {
     fetchAllFlashDecks();
   }, []);
 
-  const submitDeckHandler = () => {
+  const submitDeckHandler = (): void => {
     sendRequest(
       {
         method: "POST",
@@ -40,34 +41,28 @@ const Home = (): ReactElement => {
       }
     );
   };
-  return (
-    <div className={classes.home}>
-      <div className={classes.decksContainer}>
-        {data.map((deck: DeckCardType) => {
-          return (
-            <DeckCard
-              key={deck.id}
-              deck={deck}
-              fetchAllFlashDecks={fetchAllFlashDecks}
-            />
-          );
-        })}
-      </div>
-      <div>
-        <input
-          type="text"
-          value={deckName}
-          onChange={(e: ChangeEvent<HTMLInputElement>) =>
-            setDeckName(e.target.value)
-          }
-          className={classes.input}
-          placeholder="Enter your Deck Name"
+
+  const dataMapper = (): JSX.Element[] => {
+    return data.map((deck) => {
+      return (
+        <DeckCard
+          key={deck.id}
+          deck={deck}
+          fetchAllFlashDecks={fetchAllFlashDecks}
         />
-        <button className="btn" onClick={() => submitDeckHandler()}>
-          Add
-        </button>
-      </div>
-    </div>
+      );
+    });
+  };
+
+  return (
+    <DeckFlashCardComponent
+      inputValue={deckName}
+      setInputValue={setDeckName}
+      title={"Decks"}
+      submitHandler={submitDeckHandler}
+      dataMapper={dataMapper}
+      placeholder="Enter Deck Name"
+    />
   );
 };
 
